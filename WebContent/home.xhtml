@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:body>
+		Welcome<br />
+	<h:form>
+		<h:panelGrid columns="3">
+			username:<h:inputText label="Username" id="username" required="true" value="#{userBean.user.username}" />
+			<h:message for="username"/>
+			password:<h:inputSecret label="Password" id="password" value="#{userBean.user.password}" />
+			<h:message for="password"/>
+			<h:commandButton action="#{userBean.register}" value="register" />
+			<h:commandButton action="#{userBean.login}" value="login" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+
+</html>
