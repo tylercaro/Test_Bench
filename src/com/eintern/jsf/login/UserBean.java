@@ -33,11 +33,14 @@ public class UserBean {
 	}
 
 	public String login() {
-		String nextPage = "failure";
+		String nextPage = "";
 		User userFromDb = userdao.getUser(user.getUsername());
 		if (user.getUsername().equals(userFromDb.getUsername())
 				&& user.getPassword().equals(userFromDb.getPassword())) {
 			nextPage = "success?faces-redirect=true";
+		}
+		else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("invalid login credentials"));
 		}
 		return nextPage;
 	}

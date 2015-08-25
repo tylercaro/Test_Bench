@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+</h:head>
+<h:body>
+	<div id="page">
+	
+		<div id="header">
+			<ui:insert name="header">
+				<ui:include src="baseHeader.xhtml"/>
+			</ui:insert>
+		</div>
+		<div id="body">
+			<ui:insert name="body">
+				<ui:include src="baseBody.xhtml"/>
+			</ui:insert>
+		</div>
+		<div id="footer">
+			<ui:insert name="footer">
+				<ui:include src="baseFooter.xhtml"/>
+			</ui:insert>
+		</div>
+		
+	</div>
+</h:body>
+</html>

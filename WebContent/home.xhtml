@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
 <h:body>
+	<ui:composition template="baseTemplate.xhtml">
 		Welcome<br />
-	<h:form>
-		<h:messages />
-		<h:panelGrid columns="3">
-			username:<h:inputText label="Username" id="username" required="true"
-			requiredMessage="username cannot be blank" value="#{userBean.user.username}" />
-			<h:message for="username"/>
-			
-			password:<h:inputSecret label="Password" id="password" required="true"
-			requiredMessage="Password cannot be blank" value="#{userBean.user.password}" />
-			<h:message for="password"/>
-			<h:commandButton action="#{userBean.register}" value="register" />
-			<h:commandButton action="#{userBean.login}" value="login" />
-		</h:panelGrid>
-	</h:form>
+	<ui:define name="body">
+		<h:form id="userForm">
+			<p:messages/>
+			<p:panelGrid columns="2">
+				<p:outputLabel for="username" value="Username"/>
+				<p:inputText label="Username" id="username" required="true"
+				requiredMessage="username cannot be blank" value="#{userBean.user.username}"  />
+				
+				<p:outputLabel for="password" value="Password"/>
+				<p:password label="Password" id="password" required="true"
+				requiredMessage="Password cannot be blank" value="#{userBean.user.password}" />
+				
+				<p:commandButton update ="userForm" action="#{userBean.register}" value="register" />
+				<p:commandButton update ="userForm" action="#{userBean.login}" value="login" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>
