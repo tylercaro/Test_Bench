@@ -6,8 +6,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencies>
-	
-		<!-- JSF -->
+
+		<!-- JSF v2.2.2-->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
@@ -19,7 +19,14 @@
 			<version>2.2.2</version>
 		</dependency>
 		
-		<!-- Hibernate -->
+		<!-- Primefaces v5 -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.0</version>
+		</dependency>
+
+		<!-- Hibernate v4.3.11-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
