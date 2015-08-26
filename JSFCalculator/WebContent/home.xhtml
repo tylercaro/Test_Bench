@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+		<h:form id="calcForm">
+			<p:messages/>
+			<p:panelGrid columns="2">
+				<p:outputLabel for="firstVal" value="First Value"/>
+				<p:inputText label="First Value" id="firstVal" required="true"
+				requiredMessage="first value cannot be blank" value="#{calculationBean.calc.firstVal}"  />
+				
+				<p:outputLabel for="secondVal" value="Second Value"/>
+				<p:inputText label="Second Value" id="secondVal" required="true"
+				requiredMessage="second value cannot be blank" value="#{calculationBean.calc.secondVal}"  />
+				
+				<p:commandButton update ="calcForm" action="#{calculationBean.addition}" value="+" />
+				<p:commandButton update ="calcForm" action="#{calculationBean.subtraction}" value="-" />
+				
+				<p:commandButton update ="calcForm" action="#{calculationBean.multiplication}" value="*" />
+				<p:commandButton update ="calcForm" action="#{calculationBean.division}" value="/" />
+			</p:panelGrid>
+			
+			<p:dataTable value ="#{calculationBean.calcList}" var="calculation">
+				<p:column>
+					<f:facet name="header">ID</f:facet>
+					#{calculation.calcId}
+				</p:column>
+				<p:column>
+					<f:facet name="header">First Value</f:facet>
+					#{calculation.firstVal}
+				</p:column>
+				<p:column>
+					<f:facet name="header">Second Value</f:facet>
+					#{calculation.secondVal}
+				</p:column>
+				<p:column>
+					<f:facet name="header">Operation</f:facet>
+					#{calculation.operation}
+				</p:column>
+				<p:column>
+					<f:facet name="header">Result</f:facet>
+					#{calculation.resultVal}
+				</p:column>
+			</p:dataTable>
+		</h:form>
+</h:body>
+
+</html>
