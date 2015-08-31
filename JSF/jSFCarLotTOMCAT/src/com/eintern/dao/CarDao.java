@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.faces.bean.*;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.eintern.model.Car;
 
@@ -70,6 +72,25 @@ public class CarDao {
 
 		return result;
 
+	}
+	
+	public List<Car> getByModel(String model){
+		List<Car> result = new ArrayList<Car>();
+		Session session = sf.openSession();
+		Transaction trans = session.getTransaction();
+		try{
+			trans.begin();
+			Criteria crit = session.createCriteria(Car.class);
+			crit.add(Restrictions.eq("model",model));
+			result=(List<Car>) crit.list();
+			trans.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+			trans.rollback();
+		}finally{
+			session.close();
+		}
+		return result;
 	}
 
 }
